@@ -1,0 +1,229 @@
+.dashboard {
+  background: url("/bg-weather.png");
+  background-size: cover;
+  font-family: $font-family;
+  background-repeat: no-repeat;
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  padding-left: get-rem(117);
+  display: flex;
+  justify-content: space-between;
+  align-self: center;
+  transition: background-image 2s ease-in-out;
+
+  &__left {
+    padding-top: get-rem(37);
+    padding-bottom: get-rem(122);
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+
+    &__top {
+      display: flex;
+      justify-content: space-between;
+
+      &--search {
+        display: none;
+      }
+    }
+
+    .bottom {
+      display: flex;
+      align-items: flex-end;
+      gap: 15px;
+
+      &__temp__container {
+        position: relative;
+        margin-right: get-rem(50);
+
+        &--value {
+          color: $text-color;
+          font-size: get-rem(143);
+          font-weight: $font-weight-regular;
+          line-height: get-rem(105);
+        }
+
+        &--degree {
+          top: get-rem(1);
+          right: get-rem(-40);
+          position: absolute;
+          display: block;
+          width: get-rem(40);
+          height: get-rem(40);
+          border: get-rem(10) solid white;
+          border-radius: 50%;
+        }
+
+        &--fahrenheit {
+          top: get-rem(-10);
+          right: get-rem(-40);
+          position: absolute;
+          font-size: get-rem(50);
+          color: $text-color;
+          font-weight: bolder;
+        }
+      }
+
+      &__cityinfo__container {
+        color: $text-color;
+        font-weight: $font-weight-regular;
+        &--name {
+          font-size: get-rem(60);
+        }
+        &--datetime {
+          font-size: get-rem(18);
+        }
+      }
+    }
+  }
+
+  &__right {
+    display: flex;
+    flex-direction: column;
+    gap: get-rem(30);
+    max-width: 526px;
+    width: 100%;
+    backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    border-left: 1px solid rgba(255, 255, 255, 0.2);
+    padding: get-rem(40) get-rem(120) get-rem(40) get-rem(35);
+
+    &__textinfo p {
+      color: $text-color;
+      font-size: get-rem(18);
+      font-weight: $font-weight-regular;
+      display: flex;
+      flex-direction: column;
+      gap: get-rem(16);
+    }
+
+    &__tempinfo {
+      color: $text-color;
+      display: flex;
+      flex-direction: column;
+      gap: get-rem(40);
+
+      &--top {
+        font-size: get-rem(18);
+        font-weight: $font-weight-medium;
+        text-transform: uppercase;
+      }
+    }
+
+    &__tempdetails {
+      display: flex;
+      flex-direction: column;
+      gap: get-rem(30);
+    }
+  }
+}
+
+.search {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  &__input {
+    border: none;
+    font-size: get-rem(20);
+    color: $text-color;
+    border-bottom: get-rem(1) solid $text-color;
+    background-color: transparent;
+    padding: get-rem(14) 0 get-rem(13) get-rem(0);
+    outline: none;
+    max-width: get-rem(371);
+    width: 100%;
+  }
+
+  &__error {
+    margin: 0.5rem 0rem;
+    color: red;
+    font-weight: $font-weight-medium;
+  }
+
+  ::placeholder {
+    color: rgba($color: $text-color, $alpha: 0.7);
+    font-size: get-rem(20);
+    font-weight: $font-weight-regular;
+  }
+
+  &__icon {
+    position: absolute;
+    right: get-rem(10);
+    top: get-rem(15);
+  }
+}
+
+.suggestion {
+  position: fixed;
+  right: get-rem(119);
+  top: get-rem(112);
+  width: get-rem(372);
+  padding: get-rem(10) get-rem(15);
+  background-color: white;
+
+  li {
+    list-style: none;
+    padding: get-rem(10) get-rem(0);
+    cursor: pointer;
+
+    &:hover {
+      color: rgb(179, 174, 174);
+    }
+  }
+}
+
+.toggle__temperature {
+  position: fixed;
+  top: get-rem(20);
+  padding: get-rem(10) get-rem(15);
+  border: none;
+  outline: none;
+  border-radius: get-rem(10);
+  color: $text-color;
+  background-color: rgb(3, 3, 207);
+  font-size: get-rem(16);
+  right: get-rem(20);
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    background-color: rgb(6, 6, 245);
+  }
+}
+
+@media screen and (max-width: 1280px) {
+  .dashboard {
+    flex-direction: column;
+    position: relative;
+
+    &__left {
+      gap: get-rem(210);
+    }
+  }
+
+  #bottom__temp__container--value {
+    font-size: get-rem(120);
+  }
+
+  #bottom__temp__container--degree {
+    width: get-rem(20);
+    height: get-rem(20);
+    border: get-rem(5) solid white;
+  }
+  #bottom__cityinfo__container--name {
+    font-size: get-rem(48);
+  }
+  #bottom__cityinfo__container--datetime {
+    font-size: get-rem(16);
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .dashboard {
+    flex-direction: column;
+    padding: get-rem(50) get-rem(2);
+    align-items: center;
+  }
+}

@@ -1,0 +1,13 @@
+.weatherinfo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: get-rem(18);
+  color: rgba($color: $text-color, $alpha: 0.7);
+
+  &__right {
+    display: flex;
+    align-items: center;
+    gap: get-rem(26);
+  }
+}
