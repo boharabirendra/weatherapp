@@ -1,5 +1,5 @@
 import axios from "axios";
-import { createContext, useRef, useState } from "react";
+import { createContext, useEffect, useRef, useState } from "react";
 
 import useInput from "../hooks/useInput";
 import useFetch from "../hooks/useFetch";
@@ -27,12 +27,6 @@ const Dashboard = () => {
     if (e.key === "Enter") {
       setSuggestion([]);
       setUrl(getUrl(value.city));
-      const weatherType = getWeatherType(data?.current.condition.code)
-        ? getWeatherType(data?.current.condition.code)
-        : "sunny";
-      console.log(weatherType);
-      // @ts-ignore
-      dashboardRef.current.style.backgroundImage = `url(/${weatherType}.jpg)`;
       return;
     }
 
@@ -49,11 +43,14 @@ const Dashboard = () => {
   const handleSuggestionClick = (e: any) => {
     setUrl(getUrl(e.currentTarget.dataset.value));
     value.city = e.currentTarget.dataset.value;
+    setSuggestion([]);
+  };
+
+  useEffect(() => {
     const weatherType = getWeatherType(data?.current.condition.code);
     // @ts-ignore
     dashboardRef.current.style.backgroundImage = `url(/${weatherType}.jpg)`;
-    setSuggestion([]);
-  };
+  }, [data]);
 
   const toggleTemperature = () => {
     setIsCelsius(isCelsius ? false : true);
