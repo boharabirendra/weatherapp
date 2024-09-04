@@ -27,7 +27,10 @@ const Dashboard = () => {
     if (e.key === "Enter") {
       setSuggestion([]);
       setUrl(getUrl(value.city));
-      const weatherType = getWeatherType(data?.current.condition.code);
+      const weatherType = getWeatherType(data?.current.condition.code)
+        ? getWeatherType(data?.current.condition.code)
+        : "sunny";
+      console.log(weatherType);
       dashboardRef.current.style.backgroundImage = `url(/${weatherType}.jpg)`;
       return;
     }
@@ -55,6 +58,7 @@ const Dashboard = () => {
   };
 
   function getWeatherType(code: number): string | undefined {
+    console.log(code);
     for (const [key, values] of Object.entries(WeatherType)) {
       if (values.includes(code)) {
         return key;
