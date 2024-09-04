@@ -31,6 +31,7 @@ const Dashboard = () => {
         ? getWeatherType(data?.current.condition.code)
         : "sunny";
       console.log(weatherType);
+      // @ts-ignore
       dashboardRef.current.style.backgroundImage = `url(/${weatherType}.jpg)`;
       return;
     }
@@ -49,6 +50,7 @@ const Dashboard = () => {
     setUrl(getUrl(e.currentTarget.dataset.value));
     value.city = e.currentTarget.dataset.value;
     const weatherType = getWeatherType(data?.current.condition.code);
+    // @ts-ignore
     dashboardRef.current.style.backgroundImage = `url(/${weatherType}.jpg)`;
     setSuggestion([]);
   };
