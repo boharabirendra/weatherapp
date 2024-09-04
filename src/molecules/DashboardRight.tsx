@@ -39,12 +39,12 @@ const DashboardRight = ({
         <div className="dashboard__right__tempdetails">
           <WeatherInfo
             name="Humidity"
-            value={data?.current.humidity}
+            value={`${data?.current.humidity}%`}
             src="/humidity.png"
           />
           <WeatherInfo
             name="Cloud"
-            value={data?.current.cloud}
+            value={`${data?.current.cloud}%`}
             src="/cloud.png"
           />
           <WeatherInfo
