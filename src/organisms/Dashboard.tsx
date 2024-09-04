@@ -8,7 +8,7 @@ import { IData, initialData } from "../types/data";
 import { getSuggestionUrl, getUrl } from "../config";
 import DashboardLeft from "../molecules/DashboardLeft";
 import DashboardRight from "../molecules/DashboardRight";
-import { WeatherType } from "../data/weatherType";
+import { getWeatherType } from "../utils/getWeatherType";
 
 const initialValue = { city: "Kathmandu" };
 
@@ -55,16 +55,6 @@ const Dashboard = () => {
   const toggleTemperature = () => {
     setIsCelsius(isCelsius ? false : true);
   };
-
-  function getWeatherType(code: number): string | undefined {
-    console.log(code);
-    for (const [key, values] of Object.entries(WeatherType)) {
-      if (values.includes(code)) {
-        return key;
-      }
-    }
-    return undefined;
-  }
 
   return (
     <DashboardContext.Provider value={data}>

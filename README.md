@@ -6,4 +6,6 @@
 - If user enter false city name, it shows proper message
 - Background image will be changed based on weather condition
 
+- [here is deployed link](https://weatherapp-zeta-three.vercel.app/)
+
 ![logo](./public/output.png)
